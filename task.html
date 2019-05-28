@@ -1,11 +1,10 @@
 <html>
 <head>
-    <title> cal input</title>
-      <TITLE>cal calc </TITLE>
+    <title> calorie requirement</title>
   <style type="text/css">
     h1 {
       text-align: center;
-      color: red;
+      color: crimson;
     }
     th{
       font-size: 28px;
@@ -125,8 +124,28 @@ calsPerDay()
             btnRemove.setAttribute("onclick", "Remove(this);");
             cell.appendChild(btnRemove);
         }
+        var cal=0;
+        function addelements(){
+          cal=cal+document.getElementById('txtCalorie').value;
+          document.getElementById('txtCalorie').value="";
+          document.getElementById("txtFoodName").value="";
+        }
+        function result(){
+          document.getElementById("totalCals").style.display="innerHTML";
+          if(result<cal){
+        document.getElementById("Re").innerHTML="You have taken more number of calories .this may leads to obesity .High calorie intake will cause stress on your body.";
+      }
+      else if (result==cal) {
+        document.getElementById("Re").innerHTML="You have taken correct amount of calories.Keep it up and keep tracking your calories";
+      }
+      else if (result>cal) {
+        document.getElementById("Re").innerHTML="you have taken less number of calories.When your caloric intake is too low you will have several health problems.";
+      }
+
+        }
     </script>
-    <h1><b>CHECK THE DAILY REQUIREMENTS</b></h1>
+    <div id="re"></div>
+    <h1><strong></strong><i>CHECK THE DAILY REQUIREMENTS</i></strong></h1>
 <label><strong>FEMALE:</strong>:
   <input id="female" type="radio" name="gender" onchange="calsPerDay()">
 </label>
