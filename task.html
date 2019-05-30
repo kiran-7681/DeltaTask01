@@ -1,6 +1,7 @@
 <html>
 <head>
     <title> calorie requirement</title>
+      
   <style type="text/css">
     h1 {
       text-align: center;
@@ -73,15 +74,15 @@ calsPerDay()
         };
  
         function Remove(button) {
-           
+            
             var row = button.parentNode.parentNode;
             var name = row.getElementsByTagName("TD")[0].innerHTML;
             if (confirm("Do you want to delete: " + name)) {
  
-              
+                
                 var table = document.getElementById("tblFood");
  
-              
+                
                 table.deleteRow(row.rowIndex);
             }
         };
@@ -124,7 +125,7 @@ calsPerDay()
             btnRemove.setAttribute("onclick", "Remove(this);");
             cell.appendChild(btnRemove);
         }
-        }
+        
     </script>
     <div id="re"></div>
     <h1><strong></strong><i>CHECK THE DAILY REQUIREMENTS</i></strong></h1>
@@ -188,3 +189,4 @@ calsPerDay()
     </table>
 </body>
 </html>
+
