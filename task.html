@@ -56,21 +56,24 @@ calsPerDay()
 <body background="s2.jpg">      
     <script> 
         function Add() {
+            var Sumc;
             var txtFoodName = document.getElementById("txtFoodName");
-            var txtCalorie = document.getElementById("txtCalorie");
-            var txtCarbs = document.getElementById("txtCarbs");
-            var txtFat = document.getElementById("txtFat");
-            var txtProteins = document.getElementById("txtProteins");
-            var txtSugar = document.getElementById("txtSugar");
-            var txtSodium = document.getElementById("txtSodium");
-            AddRow(txtFoodName.value, txtCalorie.value, txtCarbs.value, txtFat.value, txtProteins.value, txtSugar.value, txtSodium.value);
+            var Calorie = document.getElementById("Calorie");
+            var Carbs = document.getElementById("Carbs");
+            var Fat = document.getElementById("Fat");
+            var Proteins = document.getElementById("Proteins");
+            var Sugar = document.getElementById("Sugar");
+            var Sodium = document.getElementById("Sodium");
+            var Sumcal = document.getElementById("Calorie").value;
+            var Sumc =Sumc + Sumcal;
+            AddRow(txtFoodName.value, Calorie.value, Carbs.value, Fat.value, Proteins.value, Sugar.value, Sodium.value, Sumc);
             txtFoodName.value = "";
-            txtCalorie.value = "";
-            txtCarbs.value = "";
-            txtFat.value = "";
-            txtProteins.value = "";
-            txtSugar.value = "";
-            txtSodium.value = "";
+            Calorie.value = "";
+            Carbs.value = "";
+            Fat.value = "";
+            Proteins.value = "";
+            Sugar.value = "";
+            Sodium.value = "";
         };
  
         function Remove(button) {
@@ -86,12 +89,14 @@ calsPerDay()
                 table.deleteRow(row.rowIndex);
             }
         };
- 
-        function AddRow(name, calorie, carbs, fat, proteins, sugar, sodium) {
+        function Addc(sumcal){
+               return sumcal;
+        }
+
+            function AddRow(name, calorie, carbs, fat, proteins, sugar, sodium, sumc) {
             
             var tBody = document.getElementById("tblFood").getElementsByTagName("TBODY")[0];
- 
-            
+
             row = tBody.insertRow(-1);
  
             
@@ -101,7 +106,6 @@ calsPerDay()
             
             cell = row.insertCell(-1);
             cell.innerHTML = calorie;
-
              cell = row.insertCell(-1);
             cell.innerHTML = carbs;
 
@@ -116,7 +120,9 @@ calsPerDay()
 
              cell = row.insertCell(-1);
             cell.innerHTML = sodium;
- 
+
+            cell = row.insertCell(-1);
+            cell.innerHTML = sumc;
             
             cell = row.insertCell(-1);
             var btnRemove = document.createElement("INPUT");
@@ -124,11 +130,9 @@ calsPerDay()
             btnRemove.value = "Remove";
             btnRemove.setAttribute("onclick", "Remove(this);");
             cell.appendChild(btnRemove);
-        }
-        
+        };
     </script>
-    <div id="re"></div>
-    <h1><strong></strong><i>CHECK THE DAILY REQUIREMENTS</i></strong></h1>
+    <h1><strong><i>CHECK THE DAILY REQUIREMENTS</i></strong></h1>
 <label><strong>FEMALE:</strong>:
   <input id="female" type="radio" name="gender" onchange="calsPerDay()">
 </label>
@@ -169,6 +173,7 @@ calsPerDay()
                 <th>Proteins</th>
                 <th>Sugar</th>
                 <th>Sodium</th>
+                <th>Sum of calorie</th>
                 <th></th>
             </tr>
         </thead>
@@ -177,16 +182,15 @@ calsPerDay()
         <tfoot>
             <tr>
                 <td><input type="text" id="txtFoodName" /></td>
-                <td><input type="text" id="txtCalorie" /></td>
-                <td><input type="text" id="txtCarbs" /></td>
-                <td><input type="text" id="txtFat" /></td>
-                <td><input type="text" id="txtProteins" /></td>
-                <td><input type="text" id="txtSugar" /></td>
-                <td><input type="text" id="txtSodium" /></td>
-                <td><input type="button" onclick="Add()" value="Add" /></td>
+                <td><input type="number" id="Calorie" /></td>
+                <td><input type="number" id="Carbs" /></td>
+                <td><input type="number" id="Fat" /></td>
+                <td><input type="number" id="Proteins" /></td>
+                <td><input type="number" id="Sugar" /></td>
+                <td><input type="number" id="Sodium" /></td>
+                <td><input type="button" onclick="Add()" value="Add" /></td>                
             </tr>
         </tfoot>
     </table>
 </body>
 </html>
-
