@@ -55,8 +55,8 @@ calsPerDay()
 </head>
 <body background="s2.jpg">      
     <script> 
+        var Sumc=0;
         function Add() {
-            var Sumc;
             var txtFoodName = document.getElementById("txtFoodName");
             var Calorie = document.getElementById("Calorie");
             var Carbs = document.getElementById("Carbs");
@@ -64,8 +64,8 @@ calsPerDay()
             var Proteins = document.getElementById("Proteins");
             var Sugar = document.getElementById("Sugar");
             var Sodium = document.getElementById("Sodium");
-            var Sumcal = document.getElementById("Calorie").value;
-            var Sumc =Sumc + Sumcal;
+            var Sumcal = document.getElementById("Calorie");
+            Sumc+=Sumcal.value;
             AddRow(txtFoodName.value, Calorie.value, Carbs.value, Fat.value, Proteins.value, Sugar.value, Sodium.value, Sumc);
             txtFoodName.value = "";
             Calorie.value = "";
@@ -89,11 +89,8 @@ calsPerDay()
                 table.deleteRow(row.rowIndex);
             }
         };
-        function Addc(sumcal){
-               return sumcal;
-        }
-
-            function AddRow(name, calorie, carbs, fat, proteins, sugar, sodium, sumc) {
+ 
+        function AddRow(name, calorie, carbs, fat, proteins, sugar, sodium, sumc) {
             
             var tBody = document.getElementById("tblFood").getElementsByTagName("TBODY")[0];
 
